@@ -7,7 +7,7 @@ public class Game {
 
 
 
-     public Scanner input = new Scanner(System.in);
+     public static Scanner input = new Scanner(System.in);
 
      public void start()
      {

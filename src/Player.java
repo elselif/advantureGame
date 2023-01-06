@@ -1,3 +1,4 @@
+
 public class Player {
      private int damage;
      private int health;
@@ -61,9 +62,11 @@ public class Player {
      {
           
 
-          GameChar[] charList = {new Samurai(),new Knight(),new Archer()};
+          GameChar[] charList = {new Samurai(),new Knight(),new Archer()}; 
 
-          
+          System.out.println("Karakterler : ");
+          System.out.println("-----------------------");
+
 
 
           for (GameChar gameChar : charList) {
@@ -71,8 +74,37 @@ public class Player {
                System.out.println("-----------------------");
           }
 
-          System.out.println("Karakterler: Samuray \t Hasar : 5 \t Sağlık : 21 \t Para : 15");
+          System.out.println("-----------------------");
 
+          System.out.println("Lütfen bir karakter seçiniz :");
+
+          int selectChar = Game.input.nextInt();
+
+          switch(selectChar)
+          {
+               case  1 :
+                    initPlayer(new Samurai());
+                    break;
+               case  2 :
+                    initPlayer(new Archer());
+                    break;
+               case  3 :
+                    initPlayer(new Knight());
+                    break;
+               default :
+                    initPlayer(new Samurai());
+               
+          }
+          System.out.println("Seçtiğiniz karakter : " + this.getCharName());
+
+     }
+
+     public void initPlayer(GameChar gameChar)
+     {
+          this.setCharName(gameChar.getName());
+          this.setDamage(gameChar.getDamage());
+          this.setHealth(gameChar.getHealth());
+          this.setMoney(gameChar.getMoney());
      }
 
 

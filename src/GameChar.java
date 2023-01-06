@@ -1,13 +1,15 @@
 public abstract class GameChar {
      
+          private int id;
           private int damage;
           private int health;
           private int money;
           private String name;
 
      
-          public GameChar(String name,int damage, int health, int money)
+          public GameChar(String name,int damage, int health, int money,int id)
           {    
+               this.id = id;
                this.name = name;
                this.damage = damage;
                this.health = health;
@@ -44,8 +46,29 @@ public abstract class GameChar {
                return this.money;
           }
 
+          public String getName()
+          {
+               return this.name;
+          }
+
+          public void setName(String name)
+          {
+               this.name = name;
+          }
+
+          public int getId()
+          {
+               return this.id;
+          }
+
+          public void setId(int id)
+          {
+               this.id = id;
+          }
+
           public void showInfo()
           {
+               System.out.println("Karakter id : " + this.id);
                System.out.println("Karakter adı : " + this.name);
                System.out.println("Karakter hasarı : " + this.damage);
                System.out.println("Karakter canı : " + this.health);
