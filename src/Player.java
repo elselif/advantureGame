@@ -6,12 +6,28 @@ public class Player {
      private String name;
      private String charName;
 
+     private Inventory inventory;
+
+     
      
 
      public Player(String name)
      {
           this.name = name;
+          this.inventory = new Inventory();
      }
+
+     public void setInventory (Inventory inventory)
+     {
+          this.inventory = inventory;
+     }
+
+     public Inventory getInventory()
+     {
+          return this.inventory;
+     }
+
+
 
      public void setCharName(String charName)
      {
@@ -107,5 +123,43 @@ public class Player {
           this.setMoney(gameChar.getMoney());
      }
 
+     public Location location = null;
+
+     public void selectLoc()
+     {
+          
+          Location[] locList = {new ToolStore(this, damage), new Safehouse(this,damage)};
+
+          System.out.println("Lütfen bir lokasyon seçiniz : ");
+
+          for (int i = 0; i < locList.length; i++) {
+               System.out.println(locList[i].getName());
+          }
+
+          int selectLoc = Game.input.nextInt();
+
+          switch(selectLoc)
+          {
+               case  1 :
+                    location = new ToolStore(this,damage);
+                    break;
+               case  2 :
+                    location = new Safehouse(this,damage);
+                    break;
+               default :
+                    location = new Safehouse(this,damage);
+
+          }
+
+          location.onLocation();
+
+          System.out.println("Seçtiğiniz lokasyon : " + locList[selectLoc-1].getName());
+
+          if(!location.onLocation())
+          {
+               System.out.println("Oyun bitti");
+               return;
+          }
+     }
 
 }

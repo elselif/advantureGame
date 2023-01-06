@@ -22,5 +22,14 @@ public class Game {
 
           System.out.println("lütfen bir karakter seçiniz");
           player.selectChar();
+          
+          while(true)
+          {
+             player.selectLoc();  
+          }
+
+        
+
+          
      }
 }
